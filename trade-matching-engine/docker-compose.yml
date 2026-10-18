@@ -1,0 +1,13 @@
+version: "3.11"
+
+services:
+  matching-engine:
+    build: .
+    container_name: trade-matching-engine
+    ports:
+      - "8765:8765"
+    volumes:
+      # Persistent storage for WAL files and order-book snapshots
+      - ./data:/app/data
+    restart: unless-stopped
+
